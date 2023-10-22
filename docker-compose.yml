@@ -1,0 +1,48 @@
+version: "2.23.0"
+
+services:
+  postgres:
+    image: postgres:16.0
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PW}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - 5432:5432
+    networks:
+      - shared-network
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+  
+  server:
+    container_name: server_dev
+    restart: unless-stopped
+    image: react-ts-vite-node-postgress-dev:1.0.0
+    build:
+      context: server
+      target: development
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    networks:
+      - shared-network
+    depends_on:
+      - postgres
+
+  client:
+    container_name: client_dev
+    restart: unless-stopped
+    image: react-ts-vite-node-postgress-client:1.0.0
+    build:
+      context: client
+      target: development
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - shared-network
+    depends_on:
+      - server
+
+networks:
+  shared-network:
