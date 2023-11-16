@@ -5,8 +5,8 @@ A project boilerplate for Postgres, Express, React, Node, Typescript, Vite. This
 Assuming you already have docker installed.  
 
 On the projects root folder, execute the following commands:  
-`docker-compose build`  
-`docker-compose up`
+`docker compose build`  
+`docker compose up`
 
 ## Build for Production
 
