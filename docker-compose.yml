@@ -37,11 +37,6 @@ services:
       context: client
       target: development
       dockerfile: Dockerfile
-    volumes:
-      - ./client:/usr/src/client:delegated
-      - /client/node_modules
-    environment:
-      - CHOKIDAR_USEPOLLING=true
     ports:
       - 3000:3000
     networks:

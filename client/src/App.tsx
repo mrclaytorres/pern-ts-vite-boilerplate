@@ -5,7 +5,7 @@ const App = () => {
     <>
       <div className='container'>
         <div>
-          <h1 className='text-4xl text-center'>Hello World! Powered by React-TS, Vite, Node, Postgresql test</h1>
+          <h1 className='text-4xl text-center'>Hello World! Powered by React-TS, Vite, Node, Postgresql</h1>
         </div>
       </div>
     </>
